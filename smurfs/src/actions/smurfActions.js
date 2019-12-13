@@ -28,11 +28,12 @@ export const getSmurfs = () => dispatch => {
 };
 
 export const addSmurf = (newSmurf) => dispatch => {
+  console.log('ADDSMURF RUNNING', newSmurf);
   dispatch({ type: POST_SMURFS_START});
   axios.post('http://localhost:3333/smurfs', newSmurf)
     .then(res => {
-      console.log(res);
-      dispatch({ type: POST_SMURFS_SUCCESS, payload: newSmurf});
+      console.log("POST REQUEST", res);
+      dispatch({ type: POST_SMURFS_SUCCESS, payload: res.data});
     })
     .catch(err => {
       console.log(err)

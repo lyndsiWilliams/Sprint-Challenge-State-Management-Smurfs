@@ -9,6 +9,7 @@ import SmurfForm from './SmurfForm';
 
 
 const SmurfList = props => {
+  console.log(props);
 
   const fetchSmurfs = e => {
     e.preventDefault();
@@ -20,11 +21,11 @@ const SmurfList = props => {
     <div>
       <div>
         {props.smurf.map(smurf => (
-          <p key={smurf.id}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}</p>
+          <p key={smurf.name}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
         ))}
       </div>
       <button onClick={fetchSmurfs}>Release the Smurfs!</button>
-      <SmurfForm addSmurf={addSmurf} />
+      <SmurfForm addSmurf={props.addSmurf} />
     </div>
   );
 };

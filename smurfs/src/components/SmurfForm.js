@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
 
 const SmurfForm = (props) => {
-  const [newSmurf, setNewSmurf] = useState({});
+  const [newSmurf, setNewSmurf] = useState({
+    name: '',
+    age: '',
+    height: ''
+  });
+  console.log(newSmurf);
+  console.log(props);
 
-  const onSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("handleSubmit");
     props.addSmurf(newSmurf);
+    console.log(newSmurf);
   };
 
-  const handleChanges = event => {
-    setNewSmurf({...newSmurf, [event.target.name]: event.target.value});
+  const handleChanges = e => {
+    console.log("handleChanges");
+    setNewSmurf({...newSmurf, [e.target.name]: e.target.value});
   };
 
   return (
     <div className="smurf-form">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="name" onChange={handleChanges} value={newSmurf.name}/>
         <input type="text" name="age" placeholder="age" onChange={handleChanges} value={newSmurf.age}/>
         <input type="text" name="height" placeholder="height" onChange={handleChanges} value={newSmurf.height}/>
