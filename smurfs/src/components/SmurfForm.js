@@ -4,7 +4,8 @@ const SmurfForm = (props) => {
   const [newSmurf, setNewSmurf] = useState({
     name: '',
     age: '',
-    height: ''
+    height: '',
+    id: Date.now()
   });
   console.log(newSmurf);
   console.log(props);
@@ -14,6 +15,7 @@ const SmurfForm = (props) => {
     console.log("handleSubmit");
     props.addSmurf(newSmurf);
     console.log(newSmurf);
+    props.getSmurfs();
   };
 
   const handleChanges = e => {

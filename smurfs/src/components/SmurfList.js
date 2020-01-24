@@ -14,11 +14,11 @@ const SmurfList = props => {
     <div>
       <div>
         {props.smurf.map(smurf => (
-          <p key={smurf.name}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
+          <p key={smurf.id}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
         ))}
       </div>
       <button onClick={props.getSmurfs}>Release the Smurfs!</button>
-      <SmurfForm addSmurf={props.addSmurf} />
+      <SmurfForm addSmurf={props.addSmurf} getSmurfs={props.getSmurfs} />
     </div>
   );
 };
