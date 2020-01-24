@@ -5,7 +5,8 @@ import {
   POST_SMURFS_START,
   POST_SMURFS_SUCCESS,
   POST_SMURFS_FAILURE,
-  DELETE_SMURF
+  DELETE_SMURF,
+  EDIT_SMURF
 } from '../actions/smurfActions';
 
 const initialState = {
@@ -59,6 +60,12 @@ function smurfReducer(state=initialState, action) {
         smurf: state.smurf.filter(item => item.id !== action.payload),
         isFetching: false,
         error: ''
+      }
+    case EDIT_SMURF:
+      const uneditedSmurfs = state.smurf.filter(item => item.id !== action.payload.id);
+      return {
+        ...state,
+        smurf: [...uneditedSmurfs, action.payload.editedSmurf]
       }
     default:
       return state;
