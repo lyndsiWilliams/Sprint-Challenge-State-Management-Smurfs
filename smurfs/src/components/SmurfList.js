@@ -14,8 +14,8 @@ const SmurfList = props => {
     <div>
       <div>
         {props.smurf.map(smurf => (
-          <div>
-            <p key={smurf.id}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
+          <div key={smurf.id}>
+            <p>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
             <button onClick={() => props.deleteSmurf(smurf.id)}>Delete</button>
           </div>
         ))}

@@ -12,10 +12,15 @@ const SmurfForm = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("handleSubmit");
     props.addSmurf(newSmurf);
-    console.log(newSmurf);
-    props.getSmurfs();
+    console.log("handleSubmit", newSmurf);
+    // Reset form once submitted
+    setNewSmurf({
+      name: '',
+      age: '',
+      height: '',
+      id: Date.now()
+    });
   };
 
   const handleChanges = e => {
