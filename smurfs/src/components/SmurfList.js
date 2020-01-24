@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // Actions
-import { getSmurfs, addSmurf } from '../actions/smurfActions';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions/smurfActions';
 // Component
 import SmurfForm from './SmurfForm';
 
@@ -14,7 +14,10 @@ const SmurfList = props => {
     <div>
       <div>
         {props.smurf.map(smurf => (
-          <p key={smurf.id}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
+          <div>
+            <p key={smurf.id}>{smurf.name} - Age: {smurf.age} - Height: {smurf.height}cm</p>
+            <button onClick={() => props.deleteSmurf(smurf.id)}>Delete</button>
+          </div>
         ))}
       </div>
       <button onClick={props.getSmurfs}>Release the Smurfs!</button>
@@ -30,5 +33,5 @@ const mapStateToProps = state => ({
 
 export default connect (
   mapStateToProps,
-  { getSmurfs, addSmurf }
+  { getSmurfs, addSmurf, deleteSmurf }
 )(SmurfList);
